@@ -6,7 +6,7 @@ who
 echo -e "\nWould you like to see the contents of /?(y/n)-->\c" 
 read ANSWER 
 if [ $ANSWER = "y" ]; then 
-echo -e "\nThe contents of the / directory are:”
+echo -e "\nThe contents of the / directory are:"
 ls -F / 
 fi
 
