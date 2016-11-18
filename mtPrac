@@ -1,0 +1,45 @@
+#!/bin/bash
+
+export CHEAT
+
+# Create filesytem structure
+mkdir -pv udir1/udir11/udir111
+mkdir -pv udir1/udir12/udir121
+mkdir -pv udir1/udir12/udir122
+touch udir1/file1 && echo "udir1/file1 touched"
+touch udir1/udir11/udir111/file1112 && echo "udir1/udir11/udir111/file1112 touched"
+touch udir1/udir11/udir111/file1113 && echo "udir1/udir11/udir111/file1113 touched"
+touch udir1/udir12/udir121/file131 && echo "udir1/udir12/udir121/file131 touched"
+
+#• Move file1113 under directory udir121 
+mv -v udir1/udir11/udir111/file1113 udir1/udir12/udir121
+#• Create a copy of file1 under directory udir122 and name it file1-copy 
+cp -v udir1/file1 udir1/udir12/udir122
+#• Change permission for the directory udir12 and all subdirectory and files to 770 
+chmod -v 700 udir1/udir11
+chmod -vR 770 udir1/udir12
+#• Rename udir121 to udir121-renamed 
+mv -v udir1/udir12/udir121 udir1/udir12/udir121-renamed
+#• Create a soft link of the directory udir111 under the directory udir12, name the soft link udir111-sl 
+ln -sv udir1/udir11/udir111 udir1/udir12/udir111-sl
+#• Create an hard link for the file file131 under the directory udir1 named file131-hl 
+ln -v udir1/udir12/udir121-renamed/file131 udir1/file131-hl
+#• Find all files under your home directory modified in the last 5 mins 
+echo "files changed within the last 5 minutes"
+find  ~/ -mmin -6 -print
+#• Create a text file named file12 under the directory udir12. Using vi add: 
+
+if [ -n "$CHEAT" ]; then
+cat > udir1/udir12/file12 <<EOF
+#!/bin/bash 
+directory="./BashScripting" 
+# bash check if directory exists 
+if [ -d $directory ]; then 
+	echo "Directory exists" 
+else 
+	echo "Directory does not exists" 
+fi 
+EOF
+fi
+
+vim udir1/udir12/file12
