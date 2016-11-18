@@ -57,5 +57,5 @@ regEx[8]='(very )+(fat )?(tall|ugly) man'
 
 for num in `seq 1 8`;
 do
-catIt | grep ^$num | egrep --color=always ${regEx[$num]}
+catIt | grep ^$num | egrep --color=always "${regEx[$num]}"
 done
