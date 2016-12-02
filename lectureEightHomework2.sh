@@ -28,5 +28,5 @@ do
 		fi
 #		Print a blank line to make it look nicer
 		echo
-# End of wile loop
+# End of while loop
 done
